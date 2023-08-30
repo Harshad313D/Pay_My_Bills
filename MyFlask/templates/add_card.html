@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login_style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+<body>
+  <div class="container">
+    <div class="forms">
+        <div class="form-content">
+          <div class="login-form">
+            <div class="title">Add Cards</div>
+          <form method="POST">
+            <div class="input-boxes">
+                <div class="input-box">
+                    <div>
+                        <label for="Bank"> Choose Your Bank: </label>
+                        <select name="bank" id="banknames" required> 
+                            <option> </option>
+                            <option>Stat Bank Of India </option>
+                            <option>HDFC </option>
+                            <option>ICICI </option>
+                            <option>AXIS Bank </option>
+                            <option>YES Bank</option>
+                            <option>Maharashtra Gramin Bank</option>
+                            <option>Bank Of Baroda</option>
+                        </select>
+                    </div> 
+                </div>
+                <div class="input-box" >
+                    <div>
+                        <label for="Card"> Select Card type:</label>
+                        <select name="card_type" id="banknames" required> 
+                            <option> </option>
+                            <option><i class="fas fa-credit-card"></i>Credit Card           </option>
+                            <option><i class="fas fa-debit-card "></i>Debit Card            </option>
+                        </select>
+                    </div> 
+                </div>
+
+              <div class="input-box">
+                <i class="fas fa-rupee-sign "></i>
+                <input type="text" name="prch_limit" placeholder="Enter The Purchase Limit" required>
+              </div>
+
+              <div class="input-box">
+                <i class="fas fa-user "></i>
+                <input type="text" name="Holder_name" placeholder="Name Of Holder" required>
+              </div>
+
+              <div class="input-box">
+                <i class="fa-far fa-envelope "></i>
+                <input type="text" name="email" placeholder="Email Of Holder" required>
+              </div>
+
+              <div class="input-box">
+                <i class=" fa-fas fa-money-bill-alt "></i>
+                <input type="text" name="commi" placeholder="Commission" required>
+              </div>
+              
+              <div class="input-box">
+                <i class="fas fa-calendar "></i>
+                <input type="text" name="reset_date" placeholder="Limit reset Date" required>
+                <label>Of Each Month. </label>
+              </div>
+
+              <div>
+              </div>
+              <input type="checkbox" id="T&M" name="T&M" value="T&M" required>
+                   <label for="T&M">
+                     <a href="#">T&M</a>
+                   </label><br>
+              <div class="button input-box">
+                <input type="submit" value="ADD">
+                
+              </div>
+              <div class="text"><a href="#">Privacy-Policy</a></div>
+            </div>
+        </form>
+      </div>
+    
+</body>
+</html>

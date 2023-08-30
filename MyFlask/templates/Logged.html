@@ -1,0 +1,85 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PMB</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
+      integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm"
+      crossorigin="anonymous"
+    />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        body {background: linear-gradient(120deg,#4995c7, #9c54ba)}
+
+        .cover{
+        
+        }
+    </style>
+ </head>
+<body>
+
+        <div class="sticky-top">
+            <header>
+                <nav class="navbar navbar-expand-lg bg-info" style="padding:-0.5em;">
+                    <div class="container-fluid">
+                        <a href="" class="navbar-brand mb-0 h1">PMB</a>
+                        <div class="d-flex justify-content-end">
+
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#">HOME</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#">ABOUT</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#">CONTACT</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#">NEW</a>
+                                    </li>
+                                </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        </div>
+
+    <section>
+        <h3>
+            <small class="text-muted mx-5">Scroll down to see</small>
+            <a href="" class="btn btn-danger">AVAILABLE CARDS</a>
+            <a href="{{url_for('add_cards')}}" class="btn btn-warning">ADD NEW CARDS</a>
+
+        </h3>
+          
+        {% for pmb in user_data %}
+
+        <div class="row row-cols-1 row-cols-md-3 g-4"style="padding:50px">
+
+            <div class="col" >
+              <div class="card text-bg-warning" >
+                <img src="static\img\card2.png.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <div class="card-header">{{pmb.bank}}</div>
+                        <h5 class="card-title">{{pmb.card_type}}</h5>
+                        <h5 class="card-title">Purchase Limit:{{pmb.prch_limit}}</h5>
+                        <h3 class="card-title">{{pmb.Holder_name}}</h3>
+                        <h5 class="card-title">Limit reset date:{{pmb.reset_date}}</h5>
+            
+                        <a href="#" class="btn btn-primary">Go</a>
+                    </div>
+
+                </div>
+              </div>
+            </div>
+        </div>
+      {% endfor %}
+    </section>
+</body>  
+</html>  

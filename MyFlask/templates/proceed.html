@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PMB</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/demostyle.css') }}">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
+      integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  </head>
+<body>
+    <header class="row ccsticky-nav">
+            <a href="{{url_for('home')}}" class="logo row">
+                <img src="static\img\logo3.png" alt="O" />
+                <h1>PMB</h1>
+            </a>
+            <div class="toggleMenu" onclick=toggleMenu()>
+            <nav class="navigation row">
+                <ul class="row">
+                <li><a href="{{url_for('home')}}"><i class="fa fa-user"> </i>HOME</a> </li>
+                <li><a href="{{url_for('About')}}"> ABOUT</a></li>
+                <li><a href=" "> CONTACT</a></li>
+                <li><a href="#">NEW</a></li>
+                {% if not logged_in%}
+                    <li><a href="{{url_for('login')}}">LOGIN</a></li>
+                {% else %}
+                <li><a href="{{url_for('login')}}">{{cur_user}}</a></li>
+                <li><a href="{{url_for('logout')}}">logout</a></li>
+
+                {% endif %}
+                </ul>
+            </nav>
+            </div>
+    </header>
+
+    <!-- hero Section start -->
+    {% for pmb in user_data %}
+
+    <section class="hero row container">   
+ 
+        <div class="box">
+            <div class="card3">
+                <div class="row3">
+                    <div class="column">
+                        <img src="static\img\card2.png.jpg" class="card-img-top" alt="..." >
+                    </div>
+                    <div class="column">
+                      <h2>{{pmb.Holder_name}}</h2>
+                      <p>{{pmb.bank}} :<br>
+                         {{pmb.card_type}}</p>
+                    </div>
+                </div>
+            <hr/>
+                <div class="row3">
+                    <div class="column3">
+                        <h2>Minimum Commission : <br></h2>
+                        <h2>₹{{pmb.commi}}</h2>
+                        
+                    </div>
+                    <div class="column3">
+                        <h2 class="card-title">{{pmb.bank}}</h2>
+                        <h2>Limit reset Date:{{pmb.reset_date}} </h2>
+                    </div>
+                </div>
+            <hr>
+                <div>
+                    </h3>Card Holder Profile</h3>
+                    <div>
+                        <a href="#"><i class="fas fa-user">{{pmb.Holder_name}}</i></a>
+                    </div>
+                    <div>
+                        <p>He/She is our verified card holder.<br>
+                        He/She also completed many succefull transaction in this server.<br>
+                        5 star rating.  10 target completed.
+                        </p>
+
+                    </div>
+                </div>
+             <hr>
+                <div>
+                    <h3><u>READ BEFORE CONFIRMATION </u></h3>
+                    <p>
+                        1. Make sure you make a profit even after giving the commission.<br>
+                        2.Check if the delivery time suits your requirement.<br>
+                        3.Change your online store password after the order is placed. 
+                        This is important because you will have to share your login credentials with the card holder.
+                    </p>
+                </div>
+                <div align="center">
+                    <a href="{{url_for('confirm',cno=pmb.cno)}}">Confirm This Card</a>
+
+                </div>
+            </div>
+        </div>  
+        {% endfor %}
+
+        
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PMB</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
+      integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm"
+      crossorigin="anonymous"
+    />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        body {background: linear-gradient(120deg,#4995c7, #9c54ba)}
+
+        .cover{
+        }
+        
+        
+    </style>
+ </head>
+<body>
+
+        <div class="sticky-top">
+            <header>
+                <nav class="navbar navbar-expand-lg bg-info" style="padding:-0.5em; color:light;">
+                    <div class="container-fluid">
+                        <a href="{{url_for('home')}}" class="navbar-brand mb-0 h1" style="color: #f8f9fa;">PMB</a>
+                        <div class="d-flex justify-content-end">
+
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" style="color: #f8f9fa;" href="{{url_for('home')}}">HOME</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" style="color:#f8f9fa;"  href="{{url_for('About')}}">ABOUT</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" style="color: #f8f9fa;" href="#">CONTACT</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" style="color: #f8f9fa;" href="#">NEW</a>
+                                    </li>
+                                </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        </div>
+
+    <section >
+      <div class="justify-content-start">
+        <a href="{{url_for('add_cards') }}" type="button"  value="submit" class="btn btn-danger ">ADD NEW CARDS</a>
+
+      </div>
+      <div>
+        {% for pmb in user_data %}
+        <div class="container text-center">
+            <div class="row gy-3 mt-3">
+              <div id={{pmb.Holder_name}} class="col-sm">
+                <div class="card h-70">
+                  <img src="static\img\card2.png.jpg"class="card-img-top" alt="...">
+                  <div class="card-body bg-warning">
+                    <h5 class="card-title">{{pmb.bank}}</h5>
+                    <h3 class="card-title">{{pmb.Holder_name}}</h3>
+
+                    <p class="card-text">Purchase Limit:{{pmb.prch_limit}}</p>
+                    <p class="card-text">Commission:{{pmb.commi}}</p>
+                    
+                    <h5 class="card-title">Limit reset date:{{pmb.reset_date}}</h5>
+
+                    <a href="{{url_for('proceed',cno=pmb.cno)}}" class="btn btn-primary">APPLY</a>
+                  </div>
+                </div>
+              </div>
+               <div class="col-sm">
+                <div class="card h-70">
+                  <img src="static\img\card2.png.jpg" class="card-img-top" alt="...">
+                  <div class="card-body bg-info">
+                    <h5 class="card-title">{{pmb.bank}}</h5>
+                    <h3 class="card-title">{{pmb.Holder_name}}</h3>
+                    <p class="card-text">Purchase Limit:{{pmb.prch_limit}}</p>
+                    <p class="card-text">Commission:{{pmb.commi}}</p>
+
+                    <h5 class="card-title">Limit reset date:{{pmb.reset_date}}</h5>
+
+                    <a href="{{url_for('proceed',cno=pmb.cno)}}" class="btn btn-primary">APPLY</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <div class="card h-70">
+                  <img src="static\img\card2.png.jpg" class="card-img-top" alt="...">
+                  <div class="card-body text-white bg-dark">
+                    <h5 class="card-title">BANK NAME</h5>
+                    <h5 class="card-title">MR.Card Holder</h5>
+                    <p class="card-text">Purchase Limit:X0000</p>
+                    <p class="card-text">Commission:{{pmb.commi}}</p>
+
+                    <h5 class="card-title">Limit reset date:Date of Month</h5>
+
+                    <a href="#" class="btn btn-primary">APPLY</a>
+                  </div>
+                </div>
+              </div>              
+            </div>
+          </div>        
+        {% endfor %}
+        </div>
+    </section>
+
+    </body>
+</html>
+        
+        

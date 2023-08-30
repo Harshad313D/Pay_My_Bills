@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PMB</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/demostyle.css') }}">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
+      integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  </head>
+  <body>
+      <header class="row ccsticky-nav">
+              <a href="{{url_for('home')}}" class="logo row">
+                  <img src="static\img\logo3.png" alt="O" />
+                  <h1>PMB</h1>
+              </a>
+              <div class="toggleMenu" onclick=toggleMenu()>
+                <nav class="navigation row">
+                  <ul class="row">
+                    <li><a href="{{url_for('home')}}"><i class="fa fa-user"> </i>HOME</a> </li>
+                    <li><a href="{{url_for('About')}}"> ABOUT</a></li>
+                    <li><a href=" "> CONTACT</a></li>
+                    <li><a href="#">NEW</a></li>
+                    {% if not logged_in%}
+                      <li><a href="{{url_for('login')}}">LOGIN</a></li>
+                    {% else %}
+                    <li><a href="{{url_for('login')}}">{{cur_user}}</a></li>
+                    <li><a href="{{url_for('logout')}}">logout</a></li>
+
+                    {% endif %}
+                  </ul>
+                </nav>
+              </div>
+      </header>
+
+    <!-- hero Section start -->
+    <section class="hero row container">
+      <div>
+        <h1>PAY MY BILLS</h1>
+        <p>We will provide what you Derserv</p>
+        {% if not logged_in%}
+          <li><a href="{{url_for('signup')}}">SIGN IN</a></li>
+        {% else %}
+        <li><a href="{{url_for('login')}}">{{"Hello"}}, {{cur_user}}</a></li>
+        
+        {% endif %}
+      </div>
+      <div class="row">
+        <img
+          src="static\img\bankcard.png"
+          alt="yes"
+        />
+      </div>
+    </section>
+    <!-- hero section closed -->
+    <hr/>
+    <!-- Main Section -->
+    <section class="container2">
+      <div class="flex">
+        <div class="rowimg3" >
+          <img src="https://source.unsplash.com/956x537/?banking,currency,creditcard" description="Unsplash computer image" alt="loading.." />
+        </div>
+        <div class="hero container2">
+          <h1>Lets get started !</h1>
+          <p0 class="para">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+            sequi temporibus reiciendis eius rerum. Dolorem placeat harum ipsam
+            eligendi esse accusantium. Sequi ut ullam quisquam non, asperiores
+            pariatur corrupti eos.<br />
+          </p0>
+          <div class="hero align-center">
+            <a href="{{url_for('show_card') }}" value="submit">AVAILABLE CARDS</a>
+            <a href="{{url_for('add_cards') }}">ADD NEW CARDS</a>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Section Closed -->
+    <hr />
+
+    
+
+    <!--.. Contact me section ..-->
+    <section1>
+      <div class="contactme">
+        <div class="title2">
+          <h2>Contact Us</h2>
+        </div>
+
+        <div class="box">
+          <div class="card2">
+            <br />
+            <h1>Message Us</h1>
+            <br />
+            <h2>Address</h2>
+            <p>
+              East-West, South-North,<br />
+              000000 , Nowhere
+            </p>
+            <br />
+            <h2>Phone no. :</h2>
+            <p>852-202-6050</p>
+            <br />
+            <h2>E-Mail</h2>
+            <p>pmbexamples@gmail.com</p>
+          </div>
+
+          <div class="card2">
+            <br />
+            <h1>Feedback FORM</h1>
+            <br />
+            <form method "post">
+                <div class="inputBox">
+                  <span2>Full Name</span2><br />
+                  <input type="text" name="username" class="t2" required="required" />
+                </div>
+                <br/>
+                <div class="inputBox">
+                  <span2>E-Mail</span2><br />
+                  <input type="text" name="mail" class="t2" required="required" />
+                  <br />
+                </div>
+                <br />
+                <div class="inputBox">
+                  <span2>Type your message..</span2><br />
+                  <textarea required="required" class="t2"></textarea>
+                </div>
+                <br />
+                <div>
+                 
+                    <button type="submit" value="SUBMIT" class="button">SUBMIT</button>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section1>
+    
+    <!--.. Footer part ..-->
+
+    <footer align="center">
+      Copyright &copy; HarshadDongardive.com | All rights reserved
+    </footer>
+
+    <script src="script.js" type="text/javascript" defer></scriphttps:>
+  </body>
+</html>

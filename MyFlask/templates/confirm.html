@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PMB</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/demostyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login_style.css') }}">
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
+      integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+<body>
+    <header class="row ccsticky-nav">
+            <a href="{{url_for('home')}}" class="logo row">
+                <img src="static\img\logo3.png" alt="O" />
+                <h1>PMB</h1>
+            </a>
+            <div class="toggleMenu" onclick=toggleMenu()>
+            <nav class="navigation row">
+                <ul class="row">
+                <li><a href="{{url_for('home')}}"><i class="fa fa-user"> </i>HOME</a> </li>
+                <li><a href="{{url_for('About')}}"> ABOUT</a></li>
+                <li><a href=" "> CONTACT</a></li>
+                <li><a href="#">NEW</a></li>
+                {% if not logged_in%}
+                    <li><a href="{{url_for('login')}}">LOGIN</a></li>
+                {% else %}
+                <li><a href="{{url_for('login')}}">{{cur_user}}</a></li>
+                <li><a href="{{url_for('logout')}}">logout</a></li>
+
+                {% endif %}
+                </ul>
+            </nav>
+            </div>
+    </header>
+
+    <!-- hero Section start -->
+
+    <section class="hero row container">  
+        <div class="container">
+            <div class="forms up">
+                <div class="form-content">
+                  <div class="login-form">
+                    <div class="title">PLACE ORDER</div>
+                <form method="post">
+                
+                    <div class="input-box ">
+                        <i class="fas fa-rupee-sign "></i>
+                        <input type="text" name="username" placeholder="ENTER UR NAME" required>
+
+                    </div>
+
+                    <div class="input-box">
+                        <i class="fas fa-user "></i>
+                        <input type="text" name="p_url" placeholder="Enter Product ULR" required>
+                    </div>
+
+                    <div class="input-box">
+                        <i class="fa-far fa-envelope "></i>
+                        <input type="text" name="r_price" placeholder="Regular price" required>
+                    </div>
+
+                    <div class="input-box">
+                        <i class=" fa-fas fa-money-bill-alt "></i>
+                        <input type="text" name="d_price" placeholder="Discount price" required>
+                       
+                    </div>
+                    
+                    <div class="input-box">
+                        <i class="fas fa-calendar "></i>
+                        <input type="text" name="D_day" placeholder="Days Of Delivery" required>
+                        <label>Max days of Delivery</label>
+                    </div>
+                    <div>
+                    <a href="#" type="submit" value="pay"  required>PAY HERE</a>
+
+                    <a href="{{url_for('send_email')}}" type="submit" value="signup">PLACE ORDER</a>
+                    </div>
+                 </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+</body>
+</html>
